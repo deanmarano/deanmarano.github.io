@@ -1,0 +1,39 @@
+<div class="life-calendar">
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Current</th>
+        <th>Remaining</th>
+      </tr>
+    </thead>
+    <tr>
+      <td> Percentage: </td> <td> {{percentComplete}}% </td><td>{{percentRemaining}}</td>
+    </tr>
+    <tr>
+      <td> Years: </td> <td> {{yearsComplete}} </td> <td> {{yearsRemaining}} </td>
+    </tr>
+    <tr>
+      <td> Months: </td> <td> {{monthsComplete}} </td> <td> {{monthsRemaining}} </td>
+    </tr>
+    <tr>
+      <td> Days: </td> <td> {{daysComplete}} </td> <td> {{daysRemaining}} </td>
+    </tr>
+  </table>
+  {{#each years as |year|}}
+    <div class="year">
+      <div class="label">
+      {{#if year.label}}
+        {{year.label}}
+        {{else}}
+          &nbsp;
+        {{/if}}
+      </div>
+      {{#each year.months as |month|}}
+        <div class="month {{month.classes}}">
+          {{month.events.length}}
+        </div>
+      {{/each}}
+    </div>
+  {{/each}}
+</div>

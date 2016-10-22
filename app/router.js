@@ -7,6 +7,8 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('home', {path: ''});
+  this.route('eye-color', {path: 'looking-at-eyes'});
 });
 
 export default Router;
