@@ -1,0 +1,63 @@
+.life-calendar {
+  width: 100%;
+  .label {
+    width: 40px;
+  }
+  .year {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .expanded {
+    text-align: center;
+  }
+  .month {
+    border: 1px solid lightgrey;
+    width: 20px;
+    text-align: center;
+    color: white;
+    margin: 1px;
+  }
+  .past {
+    border-color: lightgrey;
+  }
+  .future {
+    border-color: grey;
+  }
+
+  .before-life {
+    border-color: darkgrey;
+    background-color: lightgrey;
+    color: lightgrey;
+  }
+  .has-event {
+    color: white;
+    border-color: blue;
+    &:hover {
+      color: black;
+    }
+  }
+
+  .family {
+    border-color: red;
+  }
+
+  .work {
+    border-color: orange;
+  }
+
+  .life {
+    border-color: green;
+  }
+
+  .world {
+    border-color: purple;
+  }
+
+  .after-death {
+    border-color: darkgrey;
+    background-color: lightgrey;
+    color: lightgrey;
+  }
+
+}

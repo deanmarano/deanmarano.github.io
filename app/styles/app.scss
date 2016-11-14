@@ -1,51 +1,51 @@
-.life-calendar {
-  width: 100%;
-  .label {
-    width: 40px;
-  }
-  .year {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-  .month {
-    border: 1px solid lightgrey;
-    width: 20px;
-    text-align: center;
-    color: white;
-    margin: 1px;
-  }
-  .past {
-    border-color: lightgreen;
-  }
-  .future {
-    border-color: lightgrey;
-  }
 
-  .before-life {
-    border-color: darkgrey;
-    background-color: lightgrey;
-    color: lightgrey;
-  }
-  .has-event {
-    color: white;
-    border-color: blue;
-    &:hover {
-      color: black;
-    }
-  }
-
-  .after-death {
-    border-color: darkgrey;
-    background-color: lightgrey;
-    color: lightgrey;
-  }
-
-}
-
-html, body {
+html {
   box-sizing: border-box;
+  height: 100%;
 }
+
 body {
-  margin: 10px;
+  border: 4px solid black;
+  margin: 3px;
+  box-shadow: 3px 3px 13px 0px rgba(0,0,0,0.75);
+  padding: 5px;
+  min-height: 96%;
 }
+
+.title {
+  text-align: center;
+  font-size: 10vw;
+}
+
+.tagline {
+  text-align: center;
+}
+
+.home, .post {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  .title {
+    font-size: 8vw;
+  }
+}
+.center {
+  text-align: center;
+}
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  text-align: center;
+}
+
+.markdown-helper {
+  margin: 30px;
+  text-align: justify;
+}
+
+@import 'life-calendar.scss';
+@import 'eye-color.scss';

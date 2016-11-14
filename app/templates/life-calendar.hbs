@@ -1,0 +1,19 @@
+{{life-calendar life=model}}
+{{outlet}}
+
+In
+{{input type="date" value=date}}
+<br>
+My parents were
+{{#if parentsNotBorn}}
+  not born yet.
+{{else}}
+  {{parentsAge}} and were {{parentsAgeDiff}}
+{{/if}}
+<br>
+{{#if grandparentsNotBorn}}
+  not born yet.
+{{else}}
+  My grandparents were {{grandparentsAge}} and were {{grandparentsAgeDiff}}
+{{/if}}
+<br>

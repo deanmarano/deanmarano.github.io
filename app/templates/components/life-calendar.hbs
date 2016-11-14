@@ -8,19 +8,19 @@
       </tr>
     </thead>
     <tr>
-      <td> Percentage: </td> <td> {{percentComplete}}% </td><td>{{percentRemaining}}</td>
+      <td> Percentage: </td> <td> {{format life.percentComplete type='percent'}} </td><td>{{format life.percentRemaining type='percent'}}</td>
     </tr>
     <tr>
-      <td> Years: </td> <td> {{yearsComplete}} </td> <td> {{yearsRemaining}} </td>
+      <td> Years: </td> <td> {{life.yearsComplete}} </td> <td> {{life.yearsRemaining}} </td>
     </tr>
     <tr>
-      <td> Months: </td> <td> {{monthsComplete}} </td> <td> {{monthsRemaining}} </td>
+      <td> Months: </td> <td> {{life.monthsComplete}} </td> <td> {{life.monthsRemaining}} </td>
     </tr>
     <tr>
-      <td> Days: </td> <td> {{daysComplete}} </td> <td> {{daysRemaining}} </td>
+      <td> Days: </td> <td> {{life.daysComplete}} </td> <td> {{life.daysRemaining}} </td>
     </tr>
   </table>
-  {{#each years as |year|}}
+  {{#each life.years as |year|}}
     <div class="year">
       <div class="label">
       {{#if year.label}}
@@ -30,10 +30,20 @@
         {{/if}}
       </div>
       {{#each year.months as |month|}}
-        <div class="month {{month.classes}}">
+        <div class="month {{month.classes}}" {{action 'expandMonth' year month on="click"}}>
           {{month.events.length}}
         </div>
       {{/each}}
     </div>
+    {{#if year.currentMonth}}
+      <div class="expanded">
+        {{#each year.currentMonth.events as |event|}}
+          <li>
+            {{format event.date type='date'}}
+            {{event.text}}
+          </li>
+        {{/each}}
+      </div>
+    {{/if}}
   {{/each}}
 </div>

@@ -1,19 +1,30 @@
-{{life-calendar events=model}}
-{{outlet}}
+<div class="home">
+  <h1 class="title">dean is {{title}}</h1>
 
-In
-{{input type="date" value=date}}
-<br>
-My parents were
-{{#if parentsNotBorn}}
-  not born yet.
-{{else}}
-  {{parentsAge}} and were {{parentsAgeDiff}}
-{{/if}}
-<br>
-{{#if grandparentsNotBorn}}
-  not born yet.
-{{else}}
-  My grandparents were {{grandparentsAge}} and were {{grandparentsAgeDiff}}
-{{/if}}
-<br>
+  <div class="tagline">
+    I'm Dean, and this is my playground.
+  </div>
+
+  <h3>Things I've Written</h3>
+
+  <ul>
+    {{#each model.posts as |post|}}
+    {{#if post.externalHost}}
+      <li><a href={{post.url}}>{{post.title}}</a> [ {{post.externalHost}} ] - {{post.date}}</li>
+    {{else}}
+      <li>{{link-to post.title 'post' post.url}} - {{post.date}}</li>
+    {{/if}}
+    {{/each}}
+  </ul>
+  <h3>Playing around with JS</h3>
+  <ul>
+    <li>{{#link-to 'life-calendar'}}Living Life{{/link-to}}</li>
+    <li>{{#link-to 'eye-color'}}Looking at Eyes{{/link-to}}</li>
+  </ul>
+  <footer class="footer">
+    <div class="flex">
+      {{link-to 'Resume' 'resume'}}
+      {{link-to 'About' 'about'}}
+    </div>
+  </footer>
+</div>

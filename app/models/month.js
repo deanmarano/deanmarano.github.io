@@ -4,14 +4,11 @@ import Ember from 'ember';
 const { attr, belongsTo } = DS;
 
 export default Ember.Object.extend({
-  //month: attr('number'),
-  //year: attr('number'),
   date: Ember.computed('month', 'year', function() {
-    var month = this.get('month');
+    var month = this.get('month') + 1;
     var paddedMonth = month < 10 ? '0' + month : month;
     return moment(`${this.get('year')}-${paddedMonth}-01`);
   }),
-  //life: belongsTo('life'),
   number: Ember.computed('month', function() {
     this.get('month') - 1;
   }),
@@ -22,12 +19,17 @@ export default Ember.Object.extend({
   past: Ember.computed('date', function() {
     return this.get("date").diff(moment()) < 0;
   }),
+  future: Ember.computed('past', function() {
+    return !this.get("past");
+  }),
   afterDeath: Ember.computed('date', 'life.deathdate', function() {
     return this.get('date').diff(this.get('life.deathdate'), 'months') >= 0;
   }),
   classes: Ember.computed('hasEvent', 'before-life', 'past', 'afterDeath', function() {
-    return ['hasEvent', 'beforeLife', 'past', 'afterDeath'].
+    return ['hasEvent', 'beforeLife', 'past', 'afterDeath', 'future'].
       map(c => this.get(c) ? c.dasherize() : null).
-      compact().join(' ');
+      compact().
+      concat(this.get('events').mapBy('type')).
+      join(' ');
   })
 });
